@@ -3,10 +3,10 @@
 There is a Python script for applying the changes.        
 BPS Patches are built against the USA versions
 
-AW1: Base
-AW2: Base 5AD0E571, Patched
-AWDS: Base
-AWDoR: Base
+AW1: Base    
+AW2: Base 5AD0E571, Patched    
+AWDS: Base    
+AWDoR: Base    
 
 # TO DO:
 ## AW1

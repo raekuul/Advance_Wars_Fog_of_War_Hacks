@@ -9,14 +9,21 @@ fow_offset = 0x3
 
 try:
     rom = open(fname, "r+b")
+    print("Opened {0} for writing.".format(fname))
 except:
     sys.exit("Error opening file: {0}".format(fname))
 
 for map in addresses:
     rom.seek(map + fow_offset,0)
-    for i in range(1):
-        if i == 0x00:
-            rom.seek(map + fow_offset,0)
-            rom.write(b'\x01')
+    i = rom.read(1)
+    print(i)
+    if i == b'\x00':
+        rom.seek(map + fow_offset,0)
+        rom.write(b'\x01')
+        print("Applied fog of war to map at location {:06X}".format(map))
+    elif i == b'\x01':
+        print("Map at location {:06X} already had Fog of War".format(map))
+    else:
+        print("Fog of War for Map at location {0:06X} neither enabled nor disabled (was passed {1})".format(map,i))
 
 rom.close()
